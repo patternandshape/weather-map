@@ -1,4 +1,5 @@
 var apiKey = require('./../.env').apiKey;
+var Temperature = require('./temperature.js').Temperature;
 
 $(document).ready(function() {
   $('#weatherLocation').click(function() {
@@ -16,8 +17,14 @@ $(document).ready(function() {
 
     $('#temperature').click(function() {
       $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey).then(function(response){
-      $('.showTemperature').text("The current temperature in" + city + " is " + response.main.temp + "K");
+        var temp = response.main.temp;
+      $('.showTemperature').text("The current temperature in " + city + " is " + temp + "K");
       });
+
+      $('#temperature').click(function() {
+         var tempCelsius = tempToCelsius(temp);  //global??????
+        $('.showTemperature').text("The current temperature in " + city + " is " + temp + "K");
+        });
     });
 
   });
