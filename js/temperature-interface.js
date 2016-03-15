@@ -6,12 +6,24 @@ $(document).ready(function() {
     $('#location').val("");
     $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey).then(function(response){
       if (response.cod === 200) {
-        $('.showWeather').text("The humidity in " + city + " is " + response.main.humidity + "%");
+        $('.showHumidity').text("The humidity in " + city + " is " + response.main.humidity + "%");
       } else {
-        $('.showWeather').text("invalid city");
+        $('.showHumidity').text("invalid city");
       }
     }).fail(function(error) {
-      $('.showWeather').text(error.message);
+      $('.showHumidity').text(error.message);
     });
+
+    $('#temperature').click(function() {
+      $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey).then(function(response){
+      $('.showTemperature').text("The current temperature in" + city + " is " + response.main.temp + "K");
+      });
+    });
+
   });
+
+
+
+
+
 });
