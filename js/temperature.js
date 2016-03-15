@@ -1,7 +1,5 @@
-C = temp - 273.15
-
-function tempToCelsius(temp) {
+exports.tempToCelsius = function(temp) {
   var celsius;
-  celsius = temp - 273.15;
+  celsius = Math.ceil(temp - 273.15);
   return celsius;
 }
