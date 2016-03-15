@@ -17,7 +17,7 @@ $(document).ready(function() {
           $('.showHumidity').text("invalid city");
         }
       }).fail(function(error) {
-        $('.showHumidity').text(error.message);
+        $('.showWeather').text(error.responseJSON.message);
       });
   });
 
